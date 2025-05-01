@@ -1,11 +1,11 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Mail, Github, Linkedin, Twitter } from "lucide-react"
+import { Github, Linkedin, Mail } from "lucide-react"
 
 export default function Contact() {
   return (
-    <section className="contact">
+    <section id="contact" className="contact">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -15,7 +15,7 @@ export default function Contact() {
           className="contact-header"
         >
           <h2>Get in Touch</h2>
-          <p>Let&apos;s connect and create something amazing together</p>
+          <p>Feel free to reach out for collaborations or just a friendly hello</p>
         </motion.div>
 
         <motion.div
@@ -38,14 +38,16 @@ export default function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon"
+              title="GitHub"
             >
               <Github />
             </a>
             <a
-              href="https://linkedin.com/in/peytonbarre"
+              href="https://www.linkedin.com/in/peytonbarre/"
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon"
+              title="LinkedIn"
             >
               <Linkedin />
             </a>
