@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail } from 'lucide-react'
+import Image from 'next/image'
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null)
@@ -36,7 +37,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="hero-greeting">Hello, I'm</span>
+            <span className="hero-greeting">Hello, I&apos;m</span>
             <h1>Peyton Barre</h1>
             <div className="hero-title">
               <span className="gradient-text">Full Stack Developer</span>
@@ -48,7 +49,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            I'm a passionate developer specializing in creating functional web applications, cloud development,
+            I&apos;m a passionate developer specializing in creating functional web applications, cloud development,
             and platform security.  With expertise in modern technologies and a focus on user experience, I bring ideas to life 
             through clean, efficient code.
           </motion.p>
@@ -97,9 +98,11 @@ export default function Hero() {
           </motion.div>
         </div>
         <div className="hero-image" ref={heroRef}>
-          <img 
+          <Image 
             src="/photo.jpg" 
             alt="Peyton Barre"
+            width={500}
+            height={500}
             style={{
               width: '100%',
               height: '100%',

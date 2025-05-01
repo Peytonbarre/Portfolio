@@ -44,7 +44,7 @@ export default function Projects() {
           className="projects-header"
         >
           <h2>My Projects</h2>
-          <p>Here are some of the projects I've worked on</p>
+          <p>Here are some of the projects I&apos;ve worked on</p>
         </motion.div>
 
         <div className="projects-grid">

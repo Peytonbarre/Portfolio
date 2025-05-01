@@ -31,7 +31,7 @@ export default function About() {
               Development Journey
             </h3>
             <p>
-              With over 2 years of experience in web development, I've worked on a variety of projects
+              With over 2 years of experience in web development, I&apos;ve worked on a variety of projects
               ranging from small club websites to large-scale enterprise applications.
             </p>
           </motion.div>

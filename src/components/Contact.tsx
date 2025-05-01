@@ -15,7 +15,7 @@ export default function Contact() {
           className="contact-header"
         >
           <h2>Get in Touch</h2>
-          <p>Let's connect and create something amazing together</p>
+          <p>Let&apos;s connect and create something amazing together</p>
         </motion.div>
 
         <motion.div
