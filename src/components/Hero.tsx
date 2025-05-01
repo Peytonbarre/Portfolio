@@ -36,11 +36,12 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
+            className="text-center md:text-left"
           >
             <span className="hero-greeting">Hello, I&apos;m</span>
-            <h1>Peyton Barre</h1>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl">Peyton Barre</h1>
             <div className="hero-title">
-              <span className="gradient-text">Full Stack Developer</span>
+              <span className="gradient-text text-2xl md:text-3xl lg:text-4xl">Full Stack Developer</span>
             </div>
           </motion.div>
           
@@ -48,9 +49,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-base md:text-lg"
           >
             I&apos;m a passionate developer specializing in creating functional web applications, cloud development,
-            and platform security.  With expertise in modern technologies and a focus on user experience, I bring ideas to life 
+            and platform security. With expertise in modern technologies and a focus on user experience, I bring ideas to life 
             through clean, efficient code.
           </motion.p>
 
@@ -58,7 +60,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="hero-social"
+            className="hero-social flex justify-center md:justify-start"
           >
             <a
               href="mailto:peytonbarre54@gmail.com"
@@ -91,10 +93,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="hero-cta"
+            className="hero-cta flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
           >
-            <a href="#projects" className="primary">View My Work</a>
-            <a href="#contact" className="secondary">Get in Touch</a>
+            <a href="#projects" className="primary text-center">View My Work</a>
+            <a href="#contact" className="secondary text-center">Get in Touch</a>
           </motion.div>
         </div>
         <div className="hero-image" ref={heroRef}>
@@ -103,14 +105,10 @@ export default function Hero() {
             alt="Peyton Barre"
             width={500}
             height={500}
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              borderRadius: '3rem',
-              position: 'relative',
-              zIndex: 1
-            }}
+            priority
+            quality={90}
+            loading="eager"
+            className="w-full h-full object-cover rounded-[3rem] relative z-[1]"
           />
           <div className="hero-image-glow" />
         </div>

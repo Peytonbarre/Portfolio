@@ -3,12 +3,13 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { useTheme } from "next-themes"
-import { Moon, Sun } from "lucide-react"
+import { Moon, Sun, Menu, X } from "lucide-react"
 import { motion } from "framer-motion"
 
 export default function Navbar() {
   const [mounted, setMounted] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { theme, setTheme } = useTheme()
 
   useEffect(() => {
@@ -35,6 +36,16 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  const handleLinkClick = () => {
+    setIsMenuOpen(false)
+  }
+
+  const handleThemeToggle = () => {
+    console.log('Current theme:', theme)
+    setTheme(theme === "dark" ? "light" : "dark")
+    setIsMenuOpen(false)
+  }
+
   return (
     <motion.nav 
       className="navbar"
@@ -47,37 +58,48 @@ export default function Navbar() {
           <span className="logo-text">PB</span>
         </Link>
         
-        <div className="nav-links">
+        {/* Mobile Menu Button */}
+        <button
+          className="mobile-menu-button"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+
+        {/* Navigation Links */}
+        <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
           <Link 
             href="#about" 
             className={activeSection === "about" ? "active" : ""}
+            onClick={handleLinkClick}
           >
             About
           </Link>
           <Link 
             href="#projects"
             className={activeSection === "projects" ? "active" : ""}
+            onClick={handleLinkClick}
           >
             Projects
           </Link>
           <Link 
             href="#skills"
             className={activeSection === "skills" ? "active" : ""}
+            onClick={handleLinkClick}
           >
             Skills
           </Link>
           <Link 
             href="#contact"
             className={activeSection === "contact" ? "active" : ""}
+            onClick={handleLinkClick}
           >
             Contact
           </Link>
           
           <button
-            onClick={() => {
-              console.log('Current theme:', theme);
-              setTheme(theme === "dark" ? "light" : "dark");
-            }}
+            onClick={handleThemeToggle}
             className="theme-toggle"
             aria-label="Toggle theme"
           >
