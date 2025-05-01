@@ -74,7 +74,10 @@ export default function Navbar() {
           </Link>
           
           <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            onClick={() => {
+              console.log('Current theme:', theme);
+              setTheme(theme === "dark" ? "light" : "dark");
+            }}
             className="theme-toggle"
             aria-label="Toggle theme"
           >

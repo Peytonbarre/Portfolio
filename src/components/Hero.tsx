@@ -68,7 +68,7 @@ export default function Hero() {
               <Mail />
             </a>
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/PeytonBarre"
               target="_blank"
               rel="noopener noreferrer"
               className="social-link"
@@ -77,7 +77,7 @@ export default function Hero() {
               <Github />
             </a>
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://www.linkedin.com/in/peytonbarre/"
               target="_blank"
               rel="noopener noreferrer"
               className="social-link"

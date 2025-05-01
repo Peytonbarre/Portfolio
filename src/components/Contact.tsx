@@ -27,14 +27,14 @@ export default function Contact() {
         >
           <div className="contact-main">
             <Mail className="icon" />
-            <a href="mailto:your.email@example.com" className="email-link">
-              your.email@example.com
+            <a href="mailto:peytonbarre54@gmail.com" className="email-link">
+              peytonbarre54@gmail.com
             </a>
           </div>
 
           <div className="social-links">
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/PeytonBarre"
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon"
@@ -42,20 +42,12 @@ export default function Contact() {
               <Github />
             </a>
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://linkedin.com/in/peytonbarre"
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon"
             >
               <Linkedin />
-            </a>
-            <a
-              href="https://twitter.com/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-icon"
-            >
-              <Twitter />
             </a>
           </div>
         </motion.div>
