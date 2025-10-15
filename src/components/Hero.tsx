@@ -1,118 +1,100 @@
 "use client"
 
-import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail } from 'lucide-react'
-import Image from 'next/image'
 
 export default function Hero() {
-  const heroRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    // Set initial position lower than center (you can adjust the -30% value to position it exactly where you want)
-    if (heroRef.current) {
-      heroRef.current.style.transform = 'translateY(-10%)'
-    }
-
-    const handleScroll = () => {
-      if (heroRef.current) {
-        const scrollY = window.scrollY
-        const speed = 0.6
-        const maxScroll = 300 // Maximum pixels the image can move
-        const translateY = Math.min(scrollY * speed, maxScroll)
-        heroRef.current.style.transform = `translateY(calc(-10% + ${translateY}px))`
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
   return (
-    <section className="hero">
-      <div className="container">
-        <div className="hero-content">
+    <section className="hero" style={{
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '10px 2rem 60px',
+      position: 'relative',
+      overflow: 'hidden'
+    }}>
+      <div className="container" style={{
+        maxWidth: '1400px',
+        margin: '0 auto',
+        padding: '0 2rem',
+        width: '100%'
+      }}>
+        <div style={{
+          maxWidth: '900px',
+          margin: '0 auto',
+          textAlign: 'left'
+        }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center md:text-left"
           >
-            <span className="hero-greeting">Hello, I&apos;m</span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl">Peyton Barre</h1>
-            <div className="hero-title">
-              <span className="gradient-text text-2xl md:text-3xl lg:text-4xl">Full Stack Developer</span>
+            <h1 className="glass-display" style={{ marginBottom: '1.5rem', lineHeight: '1.05' }}>
+              Peyton Barre
+              <br />
+              <span style={{ opacity: 0.5 }}>Full Stack Developer</span>
+            </h1>
+
+            <p className="glass-text-large" style={{
+              maxWidth: '700px',
+              marginBottom: '2.5rem',
+              lineHeight: '1.8',
+              opacity: 0.7
+            }}>
+              Building elegant solutions to complex problems. Specializing in web applications,
+              cloud development, and platform security with modern technologies.
+            </p>
+
+            <div style={{ display: 'flex', gap: '1rem', marginBottom: '2.5rem', flexWrap: 'wrap' }}>
+              <a href="#projects" className="glass-btn-primary" style={{ padding: '1rem 2rem' }}>
+                View My Work
+              </a>
+              <a href="#contact" className="glass-btn" style={{ padding: '1rem 2rem' }}>
+                Get in Touch
+              </a>
+            </div>
+
+            {/* Key metrics */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+              gap: '2rem',
+              maxWidth: '600px',
+              marginTop: '1rem'
+            }}>
+              <div>
+                <div className="glass-text-tiny" style={{ marginBottom: '0.5rem' }}>EXPERIENCE</div>
+                <div className="mono" style={{ fontSize: '1.5rem', fontWeight: '300' }}>2+ Years</div>
+                <div className="glass-text-small" style={{ opacity: 0.5 }}>Full stack dev</div>
+              </div>
+              <div>
+                <div className="glass-text-tiny" style={{ marginBottom: '0.5rem' }}>PROJECTS</div>
+                <div className="mono" style={{ fontSize: '1.5rem', fontWeight: '300' }}>10+</div>
+                <div className="glass-text-small" style={{ opacity: 0.5 }}>Shipped to prod</div>
+              </div>
+              <div>
+                <div className="glass-text-tiny" style={{ marginBottom: '0.5rem' }}>FOCUS</div>
+                <div className="mono" style={{ fontSize: '1.5rem', fontWeight: '300' }}>Cloud</div>
+                <div className="glass-text-small" style={{ opacity: 0.5 }}>AWS & Azure</div>
+              </div>
             </div>
           </motion.div>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-base md:text-lg"
-          >
-            I&apos;m a passionate developer specializing in creating functional web applications, cloud development,
-            and platform security. With expertise in modern technologies and a focus on user experience, I bring ideas to life 
-            through clean, efficient code.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="hero-social flex justify-center md:justify-start"
-          >
-            <a
-              href="mailto:peytonbarre54@gmail.com"
-              className="social-link"
-              title="Email"
-            >
-              <Mail />
-            </a>
-            <a
-              href="https://github.com/PeytonBarre"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-              title="GitHub"
-            >
-              <Github />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/peytonbarre/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-              title="LinkedIn"
-            >
-              <Linkedin />
-            </a>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="hero-cta flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
-          >
-            <a href="#projects" className="primary text-center">View My Work</a>
-            <a href="#contact" className="secondary text-center">Get in Touch</a>
-          </motion.div>
-        </div>
-        <div className="hero-image" ref={heroRef}>
-          <Image 
-            src="/photo.jpg" 
-            alt="Peyton Barre"
-            width={500}
-            height={500}
-            priority
-            quality={90}
-            loading="eager"
-            className="w-full h-full object-cover rounded-[3rem] relative z-[1]"
-          />
-          <div className="hero-image-glow" />
         </div>
       </div>
+
+      {/* Background subtle gradient */}
+      <div style={{
+        position: 'absolute',
+        width: '600px',
+        height: '600px',
+        background: 'radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%)',
+        borderRadius: '50%',
+        top: '20%',
+        right: '10%',
+        pointerEvents: 'none',
+        zIndex: -1
+      }} />
     </section>
   )
-} 
+}

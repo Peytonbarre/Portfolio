@@ -1,0 +1,359 @@
+/* Professional Dark Glassmorphic Design System - Portfolio Edition */
+
+:root {
+  /* Sophisticated Grayscale Palette */
+  --glass-black: rgba(0, 0, 0, 0.95);
+  --glass-dark: rgba(10, 10, 10, 0.9);
+  --glass-surface: rgba(20, 20, 20, 0.6);
+  --glass-elevated: rgba(30, 30, 30, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border-hover: rgba(255, 255, 255, 0.12);
+
+  /* Refined Text Hierarchy */
+  --text-primary: rgba(255, 255, 255, 0.95);
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-tertiary: rgba(255, 255, 255, 0.5);
+  --text-muted: rgba(255, 255, 255, 0.3);
+
+  /* Intentional Color System - Monochromatic with Purpose */
+  --accent-primary: rgba(255, 255, 255, 0.9);
+  --accent-hover: rgba(255, 255, 255, 1);
+  --accent-subtle: rgba(255, 255, 255, 0.06);
+
+  /* Emotional Colors - Sophisticated and Intentional */
+  --color-trust: rgba(110, 132, 163, 0.8);      /* Steel blue - reliability */
+  --color-growth: rgba(130, 160, 140, 0.8);     /* Sage green - progress */
+  --color-caution: rgba(180, 140, 100, 0.8);    /* Warm taupe - attention */
+  --color-energy: rgba(220, 200, 170, 0.8);     /* Champagne - premium */
+  --color-depth: rgba(80, 90, 100, 0.8);        /* Charcoal blue - depth */
+
+  /* Subtle Variations for UI */
+  --ui-positive: rgba(130, 160, 140, 0.15);     /* Sage green bg */
+  --ui-negative: rgba(150, 130, 130, 0.15);     /* Dusty rose bg */
+  --ui-highlight: rgba(220, 200, 170, 0.1);     /* Champagne highlight */
+  --ui-depth: rgba(80, 90, 100, 0.1);           /* Deep blue bg */
+
+  /* Professional Effects */
+  --blur-subtle: 20px;
+  --blur-strong: 40px;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
+  --shadow-glow: 0 0 40px rgba(255, 255, 255, 0.02);
+
+  /* Typography */
+  --font-display: -apple-system, 'SF Pro Display', 'Inter', sans-serif;
+  --font-body: -apple-system, 'SF Pro Text', 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+}
+
+/* Body background - theme aware */
+html {
+  background: var(--background) !important;
+}
+
+body {
+  background: var(--background) !important;
+  background-color: var(--background) !important;
+  color: var(--text-primary) !important;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.011em;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light mode adjustments */
+.light {
+  --glass-surface: rgba(255, 255, 255, 0.7);
+  --glass-elevated: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-border-hover: rgba(0, 0, 0, 0.15);
+  --text-primary: rgba(0, 0, 0, 0.95);
+  --text-secondary: rgba(0, 0, 0, 0.7);
+  --text-tertiary: rgba(0, 0, 0, 0.5);
+  --text-muted: rgba(0, 0, 0, 0.3);
+  --accent-subtle: rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.light body {
+  background: #ffffff !important;
+  color: var(--text-primary) !important;
+}
+
+/* Remove default gradients */
+body::before {
+  display: none !important;
+}
+
+/* Professional Typography */
+.glass-display {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-weight: 200;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: var(--text-primary);
+}
+
+.glass-heading-1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--text-primary);
+}
+
+.glass-heading-2 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+.glass-heading-3 {
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+
+/* Body Text */
+.glass-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.glass-text-large {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.glass-text-small {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-tertiary);
+}
+
+.glass-text-tiny {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* Monospace Typography */
+code,
+pre,
+.mono,
+.monospace,
+.stat-value,
+.metric-value {
+  font-family: var(--font-mono) !important;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  font-feature-settings: "liga" on, "calt" on;
+}
+
+.stat-number,
+.metric-number {
+  font-family: var(--font-mono) !important;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Sophisticated Containers */
+.glass-container {
+  background: var(--glass-surface);
+  backdrop-filter: blur(var(--blur-subtle));
+  -webkit-backdrop-filter: blur(var(--blur-subtle));
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.light .glass-container {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+.glass-card {
+  background: var(--glass-elevated);
+  backdrop-filter: blur(var(--blur-subtle));
+  -webkit-backdrop-filter: blur(var(--blur-subtle));
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.light .glass-card {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.glass-card:hover {
+  border-color: var(--glass-border-hover);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.light .glass-card:hover {
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Buttons */
+.glass-btn {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--glass-border);
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glass-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--glass-border-hover);
+  background: var(--accent-subtle);
+  transform: translateY(-1px);
+}
+
+.glass-btn-primary {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-weight: 600;
+}
+
+.glass-btn-primary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Badges */
+.glass-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  background: var(--accent-subtle);
+  color: var(--text-secondary);
+  border: 1px solid var(--glass-border);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes shimmer {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(200%);
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--glass-border-hover);
+}
+
+/* Selection */
+::selection {
+  background: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Focus States */
+:focus-visible {
+  outline: 1px solid var(--text-primary);
+  outline-offset: 2px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .glass-container {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+
+  .glass-card {
+    padding: 1.5rem;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

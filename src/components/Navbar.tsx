@@ -10,21 +10,25 @@ export default function Navbar() {
   const [mounted, setMounted] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const { theme, setTheme } = useTheme()
 
   useEffect(() => {
     setMounted(true)
 
     const handleScroll = () => {
-      const sections = ["home", "about", "projects", "skills", "contact"]
-      const scrollPosition = window.scrollY + 100
+      const scrollPosition = window.scrollY
+      setScrolled(scrollPosition > 100)
+
+      const sections = ["home", "about", "projects", "contact"]
+      const scrollPos = scrollPosition + 100
 
       for (const section of sections) {
-        const element = document.getElementById(section)
+        const element = document.getElementById(section === "home" ? "hero" : section)
         if (element) {
           const top = element.offsetTop
           const height = element.offsetHeight
-          if (scrollPosition >= top && scrollPosition < top + height) {
+          if (scrollPos >= top && scrollPos < top + height) {
             setActiveSection(section)
             break
           }
@@ -41,76 +45,179 @@ export default function Navbar() {
   }
 
   const handleThemeToggle = () => {
-    console.log('Current theme:', theme)
     setTheme(theme === "dark" ? "light" : "dark")
     setIsMenuOpen(false)
   }
 
   return (
-    <motion.nav 
-      className="navbar"
+    <motion.nav
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 1000,
+        padding: '20px 0',
+        pointerEvents: 'none'
+      }}
     >
-      <div className="container">
-        <Link href="/" className="logo">
-          <span className="logo-text">PB</span>
-        </Link>
-        
-        {/* Mobile Menu Button */}
-        <button
-          className="mobile-menu-button"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+      <div className={scrolled ? 'navbar-scrolled' : ''} style={{
+        width: scrolled ? '800px' : '100%',
+        maxWidth: scrolled ? '800px' : '100%',
+        margin: '0 auto',
+        background: scrolled ? 'var(--glass-surface)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(20px)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
+        border: scrolled ? '1px solid var(--glass-border)' : 'none',
+        borderRadius: scrolled ? '20px' : '0',
+        padding: scrolled ? '0.75rem 1.5rem' : '1.5rem 2rem',
+        transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+        boxShadow: scrolled ? 'var(--shadow-md)' : 'none',
+        pointerEvents: 'auto',
+        transform: scrolled ? 'scale(0.98)' : 'scale(1)'
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <Link href="/" style={{ textDecoration: 'none' }}>
+            <span style={{
+              fontSize: scrolled ? '1.125rem' : '1.25rem',
+              fontWeight: '600',
+              letterSpacing: '-0.02em',
+              transition: 'all 0.3s ease',
+              color: 'var(--text-primary)',
+              cursor: 'pointer'
+            }}>PB</span>
+          </Link>
 
-        {/* Navigation Links */}
-        <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-          <Link 
-            href="#about" 
-            className={activeSection === "about" ? "active" : ""}
-            onClick={handleLinkClick}
-          >
-            About
-          </Link>
-          <Link 
-            href="#projects"
-            className={activeSection === "projects" ? "active" : ""}
-            onClick={handleLinkClick}
-          >
-            Projects
-          </Link>
-          <Link 
-            href="#skills"
-            className={activeSection === "skills" ? "active" : ""}
-            onClick={handleLinkClick}
-          >
-            Skills
-          </Link>
-          <Link 
-            href="#contact"
-            className={activeSection === "contact" ? "active" : ""}
-            onClick={handleLinkClick}
-          >
-            Contact
-          </Link>
-          
+          {/* Mobile Menu Button */}
           <button
-            onClick={handleThemeToggle}
-            className="theme-toggle"
-            aria-label="Toggle theme"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+            style={{
+              background: 'transparent',
+              border: 'none',
+              color: 'var(--text-primary)',
+              cursor: 'pointer',
+              padding: '0.5rem',
+              display: 'none'
+            }}
+            className="mobile-menu-toggle"
           >
-            {mounted && theme === "dark" ? (
-              <Sun className="icon" />
-            ) : (
-              <Moon className="icon" />
-            )}
+            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
+
+          {/* Navigation Links */}
+          <div style={{
+            display: 'flex',
+            gap: scrolled ? '1.5rem' : '2rem',
+            alignItems: 'center'
+          }}>
+            <Link
+              href="#about"
+              onClick={handleLinkClick}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                color: activeSection === "about" ? 'var(--text-primary)' : 'var(--text-secondary)',
+                fontSize: scrolled ? '0.875rem' : '0.925rem',
+                fontWeight: '500',
+                cursor: 'pointer',
+                padding: '0.5rem 0.75rem',
+                borderRadius: '8px',
+                transition: 'all 0.2s ease',
+                textDecoration: 'none'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = 'var(--text-primary)'
+                e.currentTarget.style.background = 'var(--accent-subtle)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = activeSection === "about" ? 'var(--text-primary)' : 'var(--text-secondary)'
+                e.currentTarget.style.background = 'transparent'
+              }}
+            >
+              About
+            </Link>
+            <Link
+              href="#projects"
+              onClick={handleLinkClick}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                color: activeSection === "projects" ? 'var(--text-primary)' : 'var(--text-secondary)',
+                fontSize: scrolled ? '0.875rem' : '0.925rem',
+                fontWeight: '500',
+                cursor: 'pointer',
+                padding: '0.5rem 0.75rem',
+                borderRadius: '8px',
+                transition: 'all 0.2s ease',
+                textDecoration: 'none'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = 'var(--text-primary)'
+                e.currentTarget.style.background = 'var(--accent-subtle)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = activeSection === "projects" ? 'var(--text-primary)' : 'var(--text-secondary)'
+                e.currentTarget.style.background = 'transparent'
+              }}
+            >
+              Projects
+            </Link>
+            <Link
+              href="#contact"
+              onClick={handleLinkClick}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                color: activeSection === "contact" ? 'var(--text-primary)' : 'var(--text-secondary)',
+                fontSize: scrolled ? '0.875rem' : '0.925rem',
+                fontWeight: '500',
+                cursor: 'pointer',
+                padding: '0.5rem 0.75rem',
+                borderRadius: '8px',
+                transition: 'all 0.2s ease',
+                textDecoration: 'none'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = 'var(--text-primary)'
+                e.currentTarget.style.background = 'var(--accent-subtle)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = activeSection === "contact" ? 'var(--text-primary)' : 'var(--text-secondary)'
+                e.currentTarget.style.background = 'transparent'
+              }}
+            >
+              Contact
+            </Link>
+
+            <div style={{
+              width: '1px',
+              height: '20px',
+              background: 'var(--glass-border)',
+              margin: '0 0.5rem'
+            }} />
+
+            <button
+              onClick={handleThemeToggle}
+              className="glass-btn"
+              aria-label="Toggle theme"
+              style={{
+                padding: '0.5rem 0.75rem',
+                borderRadius: '10px'
+              }}
+            >
+              {mounted && theme === "dark" ? (
+                <Sun style={{ width: '1.25rem', height: '1.25rem' }} />
+              ) : (
+                <Moon style={{ width: '1.25rem', height: '1.25rem' }} />
+              )}
+            </button>
+          </div>
         </div>
       </div>
     </motion.nav>
   )
-} 
+}

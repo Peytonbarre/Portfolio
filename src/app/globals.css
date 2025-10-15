@@ -1,35 +1,11 @@
 :root {
   --background: hsl(0, 0%, 100%);
-  --foreground: hsl(222.2, 84%, 4.9%);
-  --card: hsl(0, 0%, 100%);
-  --card-foreground: hsl(222.2, 84%, 4.9%);
-  --primary: hsl(221.2, 83.2%, 53.3%);
-  --primary-foreground: hsl(210, 40%, 98%);
-  --secondary: hsl(210, 40%, 96.1%);
-  --secondary-foreground: hsl(222.2, 47.4%, 11.2%);
-  --muted: hsl(210, 40%, 96.1%);
-  --muted-foreground: hsl(215.4, 16.3%, 46.9%);
-  --accent: hsl(210, 40%, 96.1%);
-  --accent-foreground: hsl(222.2, 47.4%, 11.2%);
-  --radius: 0.5rem;
-  --gradient: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-  --gradient-2: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
-  --gradient-3: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+  --foreground: hsl(0, 0%, 10%);
 }
 
 .dark {
-  --background: hsl(222.2, 84%, 4.9%);
-  --foreground: hsl(210, 40%, 98%);
-  --card: hsl(222.2, 84%, 4.9%);
-  --card-foreground: hsl(210, 40%, 98%);
-  --primary: hsl(217.2, 91.2%, 59.8%);
-  --primary-foreground: hsl(222.2, 47.4%, 11.2%);
-  --secondary: hsl(217.2, 32.6%, 17.5%);
-  --secondary-foreground: hsl(210, 40%, 98%);
-  --muted: hsl(217.2, 32.6%, 17.5%);
-  --muted-foreground: hsl(215, 20.2%, 65.1%);
-  --accent: hsl(217.2, 32.6%, 17.5%);
-  --accent-foreground: hsl(210, 40%, 98%);
+  --background: hsl(0, 0%, 0%);
+  --foreground: hsl(0, 0%, 95%);
 }
 
 * {
@@ -56,18 +32,7 @@ body {
 }
 
 body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
-  pointer-events: none;
-  z-index: -1;
+  display: none;
 }
 
 /* Base styles */
@@ -350,9 +315,7 @@ body::before {
 .logo-text {
   font-size: 1.5rem;
   font-weight: 800;
-  background: var(--gradient-2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--foreground);
 }
 
 .nav-links {
@@ -491,9 +454,7 @@ body::before {
   font-size: 2.75rem;
   font-weight: 800;
   margin-bottom: 0rem;
-  background: var(--gradient-2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--foreground);
   display: inline-block;
   position: relative;
 }
@@ -514,9 +475,7 @@ body::before {
 .gradient-text {
   font-size: 1.75rem;
   font-weight: 700;
-  background: var(--gradient-2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--foreground);
   opacity: 0.9;
 }
 
@@ -571,8 +530,9 @@ body::before {
 }
 
 .hero-cta .primary {
-  background: var(--gradient-2);
+  background: rgba(255, 255, 255, 0.1);
   color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .hero-cta .secondary {
@@ -587,17 +547,7 @@ body::before {
 }
 
 .hero-image-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  height: 80%;
-  background: var(--gradient-2);
-  opacity: 0.2;
-  border-radius: 50%;
-  filter: blur(50px);
-  z-index: 0;
+  display: none;
 }
 
 /* Dark mode adjustments */
@@ -667,13 +617,9 @@ body::before {
   padding: 2rem 0;
   position: relative;
   overflow: visible;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(var(--primary-rgb), 0.05)
-  );
-  margin-top: -20rem;
-  padding-top: 15rem;
+  background: none;
+  margin-top: 0;
+  padding-top: 0;
   z-index: 1;
 }
 
@@ -734,7 +680,7 @@ body::before {
   top: 0;
   width: 3px;
   height: 100%;
-  background: var(--gradient-2);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 2px;
   opacity: 0.7;
   transform: scaleY(0.95);
@@ -849,11 +795,7 @@ section {
   padding: 0rem 0;
   position: relative;
   overflow: visible;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(var(--primary-rgb), 0.05)
-  );
+  background: none;
   z-index: 2;
 }
 
@@ -955,11 +897,7 @@ section {
   padding: 2rem 0;
   position: relative;
   overflow: visible;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(var(--primary-rgb), 0.05)
-  );
+  background: none;
   view-timeline: --skills-scroll block;
   animation: scroll-slowdown linear both;
   animation-timeline: --skills-scroll;
